@@ -1,12 +1,11 @@
 # Planning for Autonomous Berm Construction in Lunar-like Terrains
-# Course Project for 16-782 Planning and Decision Making in Robotics
+## Course Project for 16-782 Planning and Decision Making in Robotics
 
-## Team Members
+### Team Members
 - Vibhakar Mohta (vmohta)
 - Hariharan Ravichandran (hravicha)
 
-### Pre-requisites
-## Pre-requisites:
+### Pre-requisites:
 1. Install Docker
 2. Add Docker to Sudoers
 
@@ -26,6 +25,7 @@ bash autonomy_terminal.sh
 
 ### Running the code
 NOTE: Run the commands inside the docker container terminal
+
 0. Build the package with symlink install
 ```
 colcon build --packages-up-to lx_planning --symlink-install
@@ -43,3 +43,9 @@ python3 src/lx_packages/lx_planning/src/call_task_optimizer.py <map_yaml_name>
 python3 src/lx_packages/lx_planning/animation/animate.py <map_yaml_name>
 ```
 Video is saved as `animation_<map_yaml_name>.mp4` in the bags folder
+
+Note:
+Run these to maps reproduce results in the report
+- env_5_4
+- env_5_10
+- env_5_16
