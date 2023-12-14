@@ -1,0 +1,34 @@
+version: "3.5"
+
+# Containers
+services:
+  # Autonomy container
+  lx_autonomy:
+    build:
+      context: ./
+      dockerfile: ./docker/lx_autonomy.Dockerfile
+
+    container_name: lx_autonomy
+
+    privileged: true
+
+    environment:
+      DISPLAY: ${DISPLAY}
+
+    network_mode: host
+
+    volumes:
+      - ./src/lx_autonomy/src/lx_packages:/home/lx_autonomy/lx_autonomy_ws/src/lx_packages
+      - ./src/lx_autonomy/build_folders/build:/home/lx_autonomy/lx_autonomy_ws/build
+      - ./src/lx_autonomy/build_folders/install:/home/lx_autonomy/lx_autonomy_ws/install
+      - ./src/lx_autonomy/build_folders/log:/home/lx_autonomy/lx_autonomy_ws/log
+      - ./src/lx_autonomy/init_autonomy.sh:/home/lx_autonomy/lx_autonomy_ws/init_autonomy.sh
+      - ./bags/:/home/lx_autonomy/lx_autonomy_ws/bags/
+      - ./utilities/:/home/lx_autonomy/lx_autonomy_ws/utilities/
+      - /dev/:/dev/
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+    tty: true
+    stdin_open: true
